@@ -1,13 +1,38 @@
-use std::env;
-// use std::io;
-use serenity::{
-    async_trait,
-    model::{channel::Message, gateway::Ready},
-    prelude::*
+mod cmd;
+mod urls;
+
+use std::{
+    collections::HashSet,
+    env,
+    sync::Arc,
 };
 
-mod urls;
-// use crate::urls::*;
+use serenity::{
+    async_trait,
+    client::bridge::gateway::ShardManager,
+    framework::{
+        StandardFramework,
+        standard::macros::group,
+    },
+    http::Http,
+    model::{channel::Message, gateway::Ready},
+    prelude::*,
+};
+
+use tracing::{error, info};
+use tracing_subscriber::{
+    FmtSubscriber,
+    EnvFilter,
+};
+
+use cmd::{
+    owner::*,
+};
+
+struct ShardManagerContainer;
+impl TypeMapKey for ShardManagerContainer {
+    type Value = Arc<Mutex<ShardManager>>;
+}
 
 struct Handler;
 
@@ -35,17 +60,52 @@ impl EventHandler for Handler {
 
     async fn ready(&self, _: Context, ready: Ready) {
         println!("{} is connected and ready", ready.user.name);
+        info!("connected as: {}", ready.user.name);
     }
 }
 
+#[group]
+#[commands(quit)]
+struct General;
+
 #[tokio::main]
 async fn main() {
+    dotenv::dotenv().expect("failed to read .env file");
+
+    let subscriber = FmtSubscriber::builder()
+                        .with_env_filter(EnvFilter::from_default_env())
+                        .finish();
+
+    tracing::subscriber::set_global_default(subscriber).expect("failed to start the logger");
+
     let token = env::var("DISCORD_TOKEN").expect("unable to find token via env vars");
 
+    let http = Http::new_with_token(&token);
+
+    let (owners, _bot_id) = match http.get_current_application_info().await {
+        Ok(info) => {
+            let mut owners = HashSet::new();
+            owners.insert(info.owner.id);
+
+            (owners, info.id)
+        },
+        Err(why) => panic!("Could not access applicaion info: {:?}", why),
+    };
+
+    let framework = StandardFramework::new()
+        .configure(|c| c.owners(owners).prefix(":"))
+        .group(&GENERAL_GROUP);
+
     let mut client = Client::new(&token)
+                        .framework(framework)
                         .event_handler(Handler)
                         .await
                         .expect("Err creating client");
+
+    {
+        let mut data = client.data.write().await;
+        data.insert::<ShardManagerContainer>(client.shard_manager.clone());
+    }
 
     if let Err(why) = client.start().await {
         println!("Client Error: {:?}", why);
