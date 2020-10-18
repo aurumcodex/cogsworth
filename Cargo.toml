@@ -1,0 +1,21 @@
+[package]
+name = "cogsworth"
+version = "0.1.0"
+authors = ["aurumcodex <aurumcodex@protonmail.com>"]
+edition = "2018"
+license = "Apache-2.0"
+
+# See more keys and their definitions at https://doc.rust-lang.org/cargo/reference/manifest.html
+
+[dependencies]
+
+[dependencies.serenity]
+version = "0.9.0-rc.2"
+default-features = false
+features = [
+    "client", "gateway", "rustls_backend", "model"
+]
+
+[dependencies.tokio]
+version = "0.2"
+features = ["macros"]
