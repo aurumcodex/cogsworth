@@ -1,0 +1,3 @@
+= Cogsworth
+
+a discord bot for a server i'm in.
