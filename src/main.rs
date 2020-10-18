@@ -14,17 +14,23 @@ struct Handler;
 #[async_trait]
 impl EventHandler for Handler {
     async fn message(&self, ctx: Context, msg: Message) {
-        if msg.content == "!cringe" {
+        if msg.content == "cringe" {
             if let Err(why) = msg.channel_id.say(&ctx.http, urls::CRINGE).await {
                 println!("Err sending message: {:?}", why);
             }
+        } else if msg.content == "bean donut" {
+            if let Err(why) = msg.channel_id.say(&ctx.http, urls::BEAN_DONUT).await {
+                println!("Err sending message: {:?}", why);
+            }
+        } else if msg.content == "smug nia" {
+            if let Err(why) = msg.channel_id.say(&ctx.http, urls::SMUG_NIA).await {
+                println!("Err sending message: {:?}", why);
+            }
+        } else if msg.content == "!sex" || msg.content == "the sex" {
+            if let Err(why) = msg.channel_id.say(&ctx.http, urls::THE_SEX).await {
+                println!("Err sending message: {:?}", why);
+            }
         }
-
-        // if msg.content == "bean donut" {
-        //     if let Err(why) = msg.channel_id.say(&ctx.http, urls::BEAN_DONUT).await {
-        //         println!("Err sending message: {:?}", why);
-        //     }
-        // }
     }
 
     async fn ready(&self, _: Context, ready: Ready) {
