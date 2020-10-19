@@ -1,4 +1,10 @@
-pub const BEAN_DONUT: &str = "https://raw.githubusercontent.com/aurumcodex/cogsworth/main/img/bean_donut.png";
-pub const CRINGE: &str = "https://raw.githubusercontent.com/aurumcodex/cogsworth/main/img/cringe.png";
-pub const SMUG_NIA: &str = "https://raw.githubusercontent.com/aurumcodex/cogsworth/main/img/smug_nia.jpg";
-pub const THE_SEX: &str = "https://raw.githubusercontent.com/aurumcodex/cogsworth/main/img/Sex.gif";
+pub const BEAN_DONUT: &str  = "https://raw.githubusercontent.com/aurumcodex/cogsworth/main/img/bean_donut.png";
+pub const BEANS: &str       = "https://raw.githubusercontent.com/aurumcodex/cogsworth/main/img/beans.gif";
+pub const CHILD: &str       = "https://raw.githubusercontent.com/aurumcodex/cogsworth/main/img/child.jpg";
+pub const CRINGE: &str      = "https://raw.githubusercontent.com/aurumcodex/cogsworth/main/img/cringe.png";
+pub const RAT_CHAIR: &str   = "https://raw.githubusercontent.com/aurumcodex/cogsworth/main/img/rat.gif";
+pub const RAT: &str         = "https://raw.githubusercontent.com/aurumcodex/cogsworth/main/img/jesus_rat.png";
+pub const SMUG_NIA: &str    = "https://raw.githubusercontent.com/aurumcodex/cogsworth/main/img/smug_nia.jpg";
+pub const THE_SEX: &str     = "https://raw.githubusercontent.com/aurumcodex/cogsworth/main/img/Sex.gif";
+pub const WOT_NIA: &str     = "https://raw.githubusercontent.com/aurumcodex/cogsworth/main/img/wot_nia.png";
+pub const DISGRUNTLED: &str = "https://raw.githubusercontent.com/aurumcodex/cogsworth/main/devel/disgruntled.gif";

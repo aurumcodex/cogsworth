@@ -27,6 +27,7 @@ use tracing_subscriber::{
 
 use cmd::{
     owner::*,
+    meta::*,
 };
 
 struct ShardManagerContainer;
@@ -65,7 +66,7 @@ impl EventHandler for Handler {
 }
 
 #[group]
-#[commands(quit)]
+#[commands(quit, ping)]
 struct General;
 
 #[tokio::main]
