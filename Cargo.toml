@@ -17,11 +17,11 @@ tracing-futures = "0.2.4"
 version = "0.9.0-rc.2"
 # git = "https://github.com/serenity-rs/serenity.git"
 # branch = "current"
-default-features = false
-features = [
-    "framework", "standard_framework",
-    "client", "gateway", "rustls_backend", "model"
-]
+# default-features = false
+# features = [
+#     "framework", "standard_framework",
+#     "client", "gateway", "rustls_backend", "model"
+# ]
 
 [dependencies.tokio]
 version = "0.2"

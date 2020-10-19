@@ -48,6 +48,7 @@ async fn help(ctx: &Context, msg: &Message) -> CommandResult {
                 +disgruntled
                 +help
             ");
+            // e.color()
 
             e
         });
