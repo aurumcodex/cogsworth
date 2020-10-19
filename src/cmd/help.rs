@@ -12,13 +12,13 @@ use serenity::{
     prelude::*,
     // http,
     model::prelude::*,
-    model::id::ChannelId,
+    // model::id::ChannelId,
     framework::standard::{
         Args, CommandResult, CommandGroup, HelpOptions, StandardFramework,
         macros::{command},
     },
     // colour,
-    utils::{MessageBuilder, Colour},
+    utils::{/*MessageBuilder,*/ Colour},
 };
 // use serenity::framework::standard::help_commands::with_embeds as embed;
 
@@ -36,12 +36,13 @@ async fn help(ctx: &Context, msg: &Message) -> CommandResult {
         m.embed(|e| {
             e.title("known commands");
             e.description("
-                prefix = `+`\n
-                bean donut\n
-                smug nia\n
-                cringe\n
-                the sex\n
+                prefix = `none`\n
+                bean donut
+                smug nia
+                cringe
+                the sex
                 \n
+                prefix = `+`\n
                 +child
                 +ping
                 +beans

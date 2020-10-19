@@ -1,4 +1,4 @@
-#[allow(unused_imports)]
+//! Cogsworth is a bot for a discord server.
 
 mod cmd;
 mod urls;
@@ -14,23 +14,10 @@ use serenity::{
     client::bridge::gateway::ShardManager,
     framework::{
         StandardFramework,
-        standard::{
-            Args, CheckResult, CommandOptions, CommandResult, CommandGroup,
-            DispatchError, HelpOptions, help_commands,
-            macros::{command, group, help, check, hook},
-        },
+        standard::macros::{group},
     },
     http::Http,
-    model::{
-        channel::{Channel, Message},
-        gateway::Ready,
-        id::UserId,
-        permissions::Permissions,
-    },
-    // utils::{
-    //     ContentSafeOptions,
-    //     content_safe,
-    // },
+    model::prelude::*,
     prelude::*,
 };
 
