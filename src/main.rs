@@ -1,3 +1,5 @@
+#[allow(unused_imports)]
+
 mod cmd;
 mod urls;
 
@@ -12,10 +14,23 @@ use serenity::{
     client::bridge::gateway::ShardManager,
     framework::{
         StandardFramework,
-        standard::macros::group,
+        standard::{
+            Args, CheckResult, CommandOptions, CommandResult, CommandGroup,
+            DispatchError, HelpOptions, help_commands,
+            macros::{command, group, help, check, hook},
+        },
     },
     http::Http,
-    model::{channel::Message, gateway::Ready},
+    model::{
+        channel::{Channel, Message},
+        gateway::Ready,
+        id::UserId,
+        permissions::Permissions,
+    },
+    // utils::{
+    //     ContentSafeOptions,
+    //     content_safe,
+    // },
     prelude::*,
 };
 
@@ -28,6 +43,8 @@ use tracing_subscriber::{
 use cmd::{
     owner::*,
     meta::*,
+    images::*,
+    help::*,
 };
 
 struct ShardManagerContainer;
@@ -52,7 +69,7 @@ impl EventHandler for Handler {
             if let Err(why) = msg.channel_id.say(&ctx.http, urls::SMUG_NIA).await {
                 println!("Err sending message: {:?}", why);
             }
-        } else if msg.content == "!sex" || msg.content == "the sex" {
+        } else if msg.content == "the sex" {
             if let Err(why) = msg.channel_id.say(&ctx.http, urls::THE_SEX).await {
                 println!("Err sending message: {:?}", why);
             }
@@ -66,8 +83,12 @@ impl EventHandler for Handler {
 }
 
 #[group]
-#[commands(quit, ping)]
+#[commands(quit, ping, help)]
 struct General;
+
+#[group]
+#[commands(beans, disgruntled, child, smug)]
+struct Images;
 
 #[tokio::main]
 async fn main() {
@@ -94,8 +115,12 @@ async fn main() {
     };
 
     let framework = StandardFramework::new()
-        .configure(|c| c.owners(owners).prefix(":"))
-        .group(&GENERAL_GROUP);
+        .configure(|c| c
+            .prefix("+")
+            .owners(owners)
+        )
+        .group(&GENERAL_GROUP)
+        .group(&IMAGES_GROUP);
 
     let mut client = Client::new(&token)
                         .framework(framework)
