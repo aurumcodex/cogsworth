@@ -17,7 +17,8 @@ use serenity::{
         Args, CommandResult, CommandGroup, HelpOptions, StandardFramework,
         macros::{command},
     },
-    utils::MessageBuilder,
+    // colour,
+    utils::{MessageBuilder, Colour},
 };
 // use serenity::framework::standard::help_commands::with_embeds as embed;
 
@@ -32,7 +33,7 @@ async fn help(ctx: &Context, msg: &Message) -> CommandResult {
         m.content("command help:");
         m.tts(false);
 
-        m.embed(|mut e| {
+        m.embed(|e| {
             e.title("known commands");
             e.description("
                 prefix = `+`\n
@@ -48,6 +49,7 @@ async fn help(ctx: &Context, msg: &Message) -> CommandResult {
                 +disgruntled
                 +help
             ");
+            e.color(Colour::from_rgb(157, 192, 49));
             // e.color()
 
             e
