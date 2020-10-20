@@ -14,14 +14,14 @@ use serenity::{
     client::bridge::gateway::ShardManager,
     framework::{
         StandardFramework,
-        standard::macros::{group},
+        standard::macros::{group, hook},
     },
     http::Http,
     model::prelude::*,
     prelude::*,
 };
 
-use tracing::{error, info};
+use tracing::{debug, error, info, instrument};
 use tracing_subscriber::{
     FmtSubscriber,
     EnvFilter,
@@ -67,6 +67,19 @@ impl EventHandler for Handler {
         println!("{} is connected and ready", ready.user.name);
         info!("connected as: {}", ready.user.name);
     }
+
+    #[instrument(skip(self))]
+    async fn resume(&self, _: Context, resume: ResumedEvent) {
+        info!("Resumed; trace: {:?}", resume.trace);
+    }
+}
+
+#[hook]
+#[instrument]
+async fn before(_: &Context, msg: &Message, cmd_name: &str) -> bool {
+    info!("Got command `{}` by user `{}` in channel `{}`", cmd_name, msg.author.name, msg.channel_id);
+
+    true
 }
 
 #[group]
@@ -78,14 +91,17 @@ struct General;
 struct Images;
 
 #[tokio::main]
+#[instrument]
 async fn main() {
     dotenv::dotenv().expect("failed to read .env file");
 
-    let subscriber = FmtSubscriber::builder()
-                        .with_env_filter(EnvFilter::from_default_env())
-                        .finish();
+    // let subscriber = FmtSubscriber::builder()
+    //                     .with_env_filter(EnvFilter::from_default_env())
+    //                     .finish();
 
-    tracing::subscriber::set_global_default(subscriber).expect("failed to start the logger");
+    // tracing::subscriber::set_global_default(subscriber).expect("failed to start the logger");
+
+    tracing_subscriber::fmt::init();
 
     let token = env::var("DISCORD_TOKEN").expect("unable to find token via env vars");
 
@@ -106,6 +122,7 @@ async fn main() {
             .prefix("+")
             .owners(owners)
         )
+        .before(before)
         .group(&GENERAL_GROUP)
         .group(&IMAGES_GROUP);
 
@@ -121,6 +138,6 @@ async fn main() {
     }
 
     if let Err(why) = client.start().await {
-        println!("Client Error: {:?}", why);
+        error!("Client Error: {:?}", why);
     }
 }
