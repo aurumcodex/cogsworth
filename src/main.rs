@@ -9,12 +9,14 @@ use std::{
     sync::Arc,
 };
 
+use rand::prelude::*;
+
 use serenity::{
     async_trait,
     client::bridge::gateway::ShardManager,
     framework::{
         StandardFramework,
-        standard::macros::{group, hook},
+        standard::macros::{group, hook, help},
     },
     http::Http,
     model::prelude::*,
@@ -26,6 +28,7 @@ use tracing_subscriber::{
     FmtSubscriber,
     EnvFilter,
 };
+
 
 use cmd::{
     owner::*,
@@ -52,13 +55,29 @@ impl EventHandler for Handler {
             if let Err(why) = msg.channel_id.say(&ctx.http, urls::BEAN_DONUT).await {
                 error!("error sending message: {:?}", why);
             }
-        } else if msg.content == "smug nia" {
-            if let Err(why) = msg.channel_id.say(&ctx.http, urls::SMUG_NIA).await {
-                error!("error sending message: {:?}", why);
-            }
         } else if msg.content == "the sex" {
             if let Err(why) = msg.channel_id.say(&ctx.http, urls::THE_SEX).await {
                 error!("error sending message: {:?}", why);
+            }
+        } else if msg.content == "hee ho" {
+            let rng = rand::thread_rng().gen_range(0, 3);
+            match rng {
+                0 => {
+                    if let Err(why) = msg.channel_id.say(&ctx.http, urls::JACK_FROST1).await {
+                        error!("error sending message: {:?}", why);
+                    }
+                },
+                1 => {
+                    if let Err(why) = msg.channel_id.say(&ctx.http, urls::JACK_FROST2).await {
+                        error!("error sending message: {:?}", why);
+                    }
+                },
+                2 => {
+                    if let Err(why) = msg.channel_id.say(&ctx.http, urls::JACK_FROST3).await {
+                        error!("error sending message: {:?}", why);
+                    }
+                },
+                _ => { info!("unable to send jack frost image"); }
             }
         }
     }
@@ -83,7 +102,7 @@ async fn before(_: &Context, msg: &Message, cmd_name: &str) -> bool {
 }
 
 #[group]
-#[commands(quit, ping, help)]
+#[commands(quit, ping)]
 struct General;
 
 #[group]
@@ -123,14 +142,15 @@ async fn main() {
             .owners(owners)
         )
         .before(before)
+        .help(&HELP_FN)
         .group(&GENERAL_GROUP)
         .group(&IMAGES_GROUP);
 
     let mut client = Client::new(&token)
-                        .framework(framework)
-                        .event_handler(Handler)
-                        .await
-                        .expect("Err creating client");
+        .framework(framework)
+        .event_handler(Handler)
+        .await
+        .expect("Err creating client");
 
     {
         let mut data = client.data.write().await;

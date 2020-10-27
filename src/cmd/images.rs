@@ -14,12 +14,13 @@ use crate::urls::{
     DISGRUNTLED,
     SMUG_NIA,
     CHILD,
-
+    RAT,
+    RAT_CHAIR,
 };
 
 #[command]
 async fn beans(ctx: &Context, msg: &Message) -> CommandResult {
-    info!("got `beans` command from {}", msg.channel_id);
+    info!("got `beans` command from {} in channel {}", msg.author, msg.channel_id);
     msg.channel_id.say(&ctx.http, &BEANS).await?;
 
     Ok(())
@@ -27,7 +28,7 @@ async fn beans(ctx: &Context, msg: &Message) -> CommandResult {
 
 #[command]
 async fn disgruntled(ctx: &Context, msg: &Message) -> CommandResult {
-    info!("got `disgruntled` command from {}", msg.channel_id);
+    info!("got `disgruntled` command from {} in channel {}", msg.author, msg.channel_id);
     msg.channel_id.say(&ctx.http, &DISGRUNTLED).await?;
 
     Ok(())
@@ -35,7 +36,7 @@ async fn disgruntled(ctx: &Context, msg: &Message) -> CommandResult {
 
 #[command]
 async fn child(ctx: &Context, msg: &Message) -> CommandResult {
-    info!("got `child` command from {}", msg.channel_id);
+    info!("got `child` command from {} in channel {}", msg.author, msg.channel_id);
     msg.channel_id.say(&ctx.http, &CHILD).await?;
 
     Ok(())
@@ -43,8 +44,25 @@ async fn child(ctx: &Context, msg: &Message) -> CommandResult {
 
 #[command]
 async fn smug(ctx: &Context, msg: &Message) -> CommandResult {
-    info!("got `smug` command from {}", msg.channel_id);
+    info!("got `smug` command from {} in channel {}", msg.author, msg.channel_id);
     msg.channel_id.say(&ctx.http, &SMUG_NIA).await?;
 
     Ok(())
 }
+
+#[command]
+async fn rat(ctx: &Context, msg: &Message) -> CommandResult {
+    info!("got `rat` command from {} in channel {}", msg.author, msg.channel_id);
+    msg.channel_id.say(&ctx.http, &RAT).await?;
+
+    Ok(())
+}
+
+#[command]
+async fn rat_chair(ctx: &Context, msg: &Message) -> CommandResult {
+    info!("got `rat_chair` command from {} in channel {}", msg.author, msg.channel_id);
+    msg.channel_id.say(&ctx.http, &RAT_CHAIR).await?;
+
+    Ok(())
+}
+
