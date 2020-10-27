@@ -13,7 +13,7 @@ use crate::urls::*;
 
 #[command]
 async fn beans(ctx: &Context, msg: &Message) -> CommandResult {
-    info!("got `beans` command from {} in channel {}", msg.author, msg.channel_id);
+    info!("got `beans` command from {} in channel {}", msg.author.name, msg.channel_id);
     msg.channel_id.say(&ctx.http, &BEANS).await?;
 
     Ok(())
@@ -21,7 +21,7 @@ async fn beans(ctx: &Context, msg: &Message) -> CommandResult {
 
 #[command]
 async fn disgruntled(ctx: &Context, msg: &Message) -> CommandResult {
-    info!("got `disgruntled` command from {} in channel {}", msg.author, msg.channel_id);
+    info!("got `disgruntled` command from {} in channel {}", msg.author.name, msg.channel_id);
     msg.channel_id.say(&ctx.http, &DISGRUNTLED).await?;
 
     Ok(())
@@ -29,7 +29,7 @@ async fn disgruntled(ctx: &Context, msg: &Message) -> CommandResult {
 
 #[command]
 async fn child(ctx: &Context, msg: &Message) -> CommandResult {
-    info!("got `child` command from {} in channel {}", msg.author, msg.channel_id);
+    info!("got `child` command from {} in channel {}", msg.author.name, msg.channel_id);
     msg.channel_id.say(&ctx.http, &CHILD).await?;
 
     Ok(())
@@ -37,7 +37,7 @@ async fn child(ctx: &Context, msg: &Message) -> CommandResult {
 
 #[command]
 async fn smug(ctx: &Context, msg: &Message) -> CommandResult {
-    info!("got `smug` command from {} in channel {}", msg.author, msg.channel_id);
+    info!("got `smug` command from {} in channel {}", msg.author.name, msg.channel_id);
     msg.channel_id.say(&ctx.http, &SMUG_NIA).await?;
 
     Ok(())
@@ -45,7 +45,7 @@ async fn smug(ctx: &Context, msg: &Message) -> CommandResult {
 
 #[command]
 async fn rat(ctx: &Context, msg: &Message) -> CommandResult {
-    info!("got `rat` command from {} in channel {}", msg.author, msg.channel_id);
+    info!("got `rat` command from {} in channel {}", msg.author.name, msg.channel_id);
     msg.channel_id.say(&ctx.http, &RAT).await?;
 
     Ok(())
@@ -53,7 +53,7 @@ async fn rat(ctx: &Context, msg: &Message) -> CommandResult {
 
 #[command]
 async fn rat_chair(ctx: &Context, msg: &Message) -> CommandResult {
-    info!("got `rat_chair` command from {} in channel {}", msg.author, msg.channel_id);
+    info!("got `rat_chair` command from {} in channel {}", msg.author.name, msg.channel_id);
     msg.channel_id.say(&ctx.http, &RAT_CHAIR).await?;
 
     Ok(())
@@ -61,7 +61,7 @@ async fn rat_chair(ctx: &Context, msg: &Message) -> CommandResult {
 
 #[command]
 async fn mock(ctx: &Context, msg: &Message) -> CommandResult {
-    info!("got `rat_chair` command from {} in channel {}", msg.author, msg.channel_id);
+    info!("got `rat_chair` command from {} in channel {}", msg.author.name, msg.channel_id);
     msg.channel_id.say(&ctx.http, &JACK_FROST2).await?;
 
     Ok(())
@@ -69,7 +69,7 @@ async fn mock(ctx: &Context, msg: &Message) -> CommandResult {
 
 #[command]
 async fn death(ctx: &Context, msg: &Message) -> CommandResult {
-    info!("got `rat_chair` command from {} in channel {}", msg.author, msg.channel_id);
+    info!("got `rat_chair` command from {} in channel {}", msg.author.name, msg.channel_id);
     msg.channel_id.say(&ctx.http, &JACK_FROST1).await?;
 
     Ok(())
@@ -77,7 +77,7 @@ async fn death(ctx: &Context, msg: &Message) -> CommandResult {
 
 #[command]
 async fn hee_homeboys(ctx: &Context, msg: &Message) -> CommandResult {
-    info!("got `rat_chair` command from {} in channel {}", msg.author, msg.channel_id);
+    info!("got `rat_chair` command from {} in channel {}", msg.author.name, msg.channel_id);
     msg.channel_id.say(&ctx.http, &JACK_FROST3).await?;
 
     Ok(())
@@ -85,7 +85,7 @@ async fn hee_homeboys(ctx: &Context, msg: &Message) -> CommandResult {
 
 #[command]
 async fn wot(ctx: &Context, msg: &Message) -> CommandResult {
-    info!("got `rat_chair` command from {} in channel {}", msg.author, msg.channel_id);
+    info!("got `rat_chair` command from {} in channel {}", msg.author.name, msg.channel_id);
     msg.channel_id.say(&ctx.http, &WOT_NIA).await?;
 
     Ok(())
@@ -93,7 +93,7 @@ async fn wot(ctx: &Context, msg: &Message) -> CommandResult {
 
 #[command]
 async fn bread(ctx: &Context, msg: &Message) -> CommandResult {
-    info!("got `rat_chair` command from {} in channel {}", msg.author, msg.channel_id);
+    info!("got `rat_chair` command from {} in channel {}", msg.author.name, msg.channel_id);
     msg.channel_id.say(&ctx.http, &BREAD).await?;
 
     Ok(())
@@ -101,7 +101,7 @@ async fn bread(ctx: &Context, msg: &Message) -> CommandResult {
 
 #[command]
 async fn hydrate(ctx: &Context, msg: &Message) -> CommandResult {
-    info!("got `rat_chair` command from {} in channel {}", msg.author, msg.channel_id);
+    info!("got `rat_chair` command from {} in channel {}", msg.author.name, msg.channel_id);
     msg.channel_id.say(&ctx.http, &HYDRATE).await?;
 
     Ok(())
