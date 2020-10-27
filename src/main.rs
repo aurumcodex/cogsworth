@@ -102,11 +102,11 @@ async fn before(_: &Context, msg: &Message, cmd_name: &str) -> bool {
 }
 
 #[group]
-#[commands(quit, ping)]
+#[commands(quit, ping, help)]
 struct General;
 
 #[group]
-#[commands(beans, disgruntled, child, smug)]
+#[commands(beans, disgruntled, child, smug, rat, rat_chair, wot, death, hee_homeboys, mock)]
 struct Images;
 
 #[tokio::main]
@@ -142,7 +142,7 @@ async fn main() {
             .owners(owners)
         )
         .before(before)
-        .help(&HELP_FN)
+        // .help(&HELP_FN)
         .group(&GENERAL_GROUP)
         .group(&IMAGES_GROUP);
 

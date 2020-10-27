@@ -56,10 +56,17 @@ async fn help(ctx: &Context, msg: &Message) -> CommandResult {
                 \n
                 prefix = `+`\n
                 +beans
+                +bread
                 +child
+                +death
                 +disgruntled
+                +hee_homeboys
+                +mock
                 +ping
                 +smug
+                +rat
+                +rat_chair
+                +wot
                 +help
             ");
             e.color(Colour::from_rgb(157, 192, 49));

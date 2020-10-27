@@ -9,14 +9,7 @@ use serenity::{
 
 use tracing::info;
 
-use crate::urls::{
-    BEANS,
-    DISGRUNTLED,
-    SMUG_NIA,
-    CHILD,
-    RAT,
-    RAT_CHAIR,
-};
+use crate::urls::*;
 
 #[command]
 async fn beans(ctx: &Context, msg: &Message) -> CommandResult {
@@ -66,3 +59,42 @@ async fn rat_chair(ctx: &Context, msg: &Message) -> CommandResult {
     Ok(())
 }
 
+#[command]
+async fn mock(ctx: &Context, msg: &Message) -> CommandResult {
+    info!("got `rat_chair` command from {} in channel {}", msg.author, msg.channel_id);
+    msg.channel_id.say(&ctx.http, &JACK_FROST2).await?;
+
+    Ok(())
+}
+
+#[command]
+async fn death(ctx: &Context, msg: &Message) -> CommandResult {
+    info!("got `rat_chair` command from {} in channel {}", msg.author, msg.channel_id);
+    msg.channel_id.say(&ctx.http, &JACK_FROST1).await?;
+
+    Ok(())
+}
+
+#[command]
+async fn hee_homeboys(ctx: &Context, msg: &Message) -> CommandResult {
+    info!("got `rat_chair` command from {} in channel {}", msg.author, msg.channel_id);
+    msg.channel_id.say(&ctx.http, &JACK_FROST3).await?;
+
+    Ok(())
+}
+
+#[command]
+async fn wot(ctx: &Context, msg: &Message) -> CommandResult {
+    info!("got `rat_chair` command from {} in channel {}", msg.author, msg.channel_id);
+    msg.channel_id.say(&ctx.http, &WOT_NIA).await?;
+
+    Ok(())
+}
+
+#[command]
+async fn bread(ctx: &Context, msg: &Message) -> CommandResult {
+    info!("got `rat_chair` command from {} in channel {}", msg.author, msg.channel_id);
+    msg.channel_id.say(&ctx.http, &BREAD).await?;
+
+    Ok(())
+}
