@@ -106,7 +106,7 @@ async fn before(_: &Context, msg: &Message, cmd_name: &str) -> bool {
 struct General;
 
 #[group]
-#[commands(beans, disgruntled, child, smug, rat, rat_chair, wot, death, hee_homeboys, mock)]
+#[commands(beans, disgruntled, child, smug, rat, rat_chair, wot, death, hee_homeboys, mock, bread, hydrate)]
 struct Images;
 
 #[tokio::main]

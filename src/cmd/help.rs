@@ -61,6 +61,7 @@ async fn help(ctx: &Context, msg: &Message) -> CommandResult {
                 +death
                 +disgruntled
                 +hee_homeboys
+                +hydrate
                 +mock
                 +ping
                 +smug

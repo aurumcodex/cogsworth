@@ -4,6 +4,7 @@ pub const BREAD: &str       = "https://raw.githubusercontent.com/aurumcodex/cogs
 pub const CHILD: &str       = "https://raw.githubusercontent.com/aurumcodex/cogsworth/main/img/child.jpg";
 pub const CRINGE: &str      = "https://raw.githubusercontent.com/aurumcodex/cogsworth/main/img/cringe.png";
 pub const DISGRUNTLED: &str = "https://raw.githubusercontent.com/aurumcodex/cogsworth/devel/img/disgruntled.gif";
+pub const HYDRATE: &str     = "https://raw.githubusercontent.com/aurumcodex/cogsworth/devel/img/hydrated.png";
 pub const JACK_FROST1: &str = "https://raw.githubusercontent.com/aurumcodex/cogsworth/devel/img/jack_frost1.jpg";
 pub const JACK_FROST2: &str = "https://raw.githubusercontent.com/aurumcodex/cogsworth/devel/img/jack_frost2.jpg";
 pub const JACK_FROST3: &str = "https://raw.githubusercontent.com/aurumcodex/cogsworth/devel/img/jack_frost3.jpg";

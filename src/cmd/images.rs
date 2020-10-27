@@ -98,3 +98,11 @@ async fn bread(ctx: &Context, msg: &Message) -> CommandResult {
 
     Ok(())
 }
+
+#[command]
+async fn hydrate(ctx: &Context, msg: &Message) -> CommandResult {
+    info!("got `rat_chair` command from {} in channel {}", msg.author, msg.channel_id);
+    msg.channel_id.say(&ctx.http, &HYDRATE).await?;
+
+    Ok(())
+}
