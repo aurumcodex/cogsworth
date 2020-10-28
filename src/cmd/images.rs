@@ -106,3 +106,11 @@ async fn hydrate(ctx: &Context, msg: &Message) -> CommandResult {
 
     Ok(())
 }
+
+#[command]
+async fn panic(ctx: &Context, msg: &Message) -> CommandResult {
+    info!("got `rat_chair` command from {} in channel {}", msg.author.name, msg.channel_id);
+    msg.channel_id.say(&ctx.http, &PANIC).await?;
+
+    Ok(())
+}

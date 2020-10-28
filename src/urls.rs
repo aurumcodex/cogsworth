@@ -13,3 +13,4 @@ pub const RAT: &str         = "https://raw.githubusercontent.com/aurumcodex/cogs
 pub const SMUG_NIA: &str    = "https://raw.githubusercontent.com/aurumcodex/cogsworth/main/img/smug_nia.jpg";
 pub const THE_SEX: &str     = "https://raw.githubusercontent.com/aurumcodex/cogsworth/main/img/Sex.gif";
 pub const WOT_NIA: &str     = "https://raw.githubusercontent.com/aurumcodex/cogsworth/main/img/wot_nia.png";
+pub const PANIC: &str       = "https://raw.githubusercontent.com/aurumcodex/cogsworth/devel/img/panic.png";
