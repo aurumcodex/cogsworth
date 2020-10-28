@@ -20,24 +20,7 @@ use serenity::{
     // colour,
     utils::{/*MessageBuilder,*/ Colour},
 };
-// use serenity::framework::standard::help_commands::with_embeds as embed;
 
-// #[help]
-// #[individual_command_tip =
-// "pass command as argument to learn more"]
-// #[command_not_found_text = "couldn't find `{}`."]
-// async fn help_fn(
-//     ctx: &Context,
-//     msg: &Message,
-//     args: Args,
-//     help_options: &'static HelpOptions,
-//     groups: &[&'static CommandGroup],
-//     owners: HashSet<UserId>
-// ) -> CommandResult {
-//     let _ = help_commands::with_embeds(ctx, msg, args, help_options, groups, owners).await;
-
-//     Ok(())
-// }
 #[command]
 #[aliases("halp")]
 async fn help(ctx: &Context, msg: &Message) -> CommandResult {
